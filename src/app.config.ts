@@ -11,7 +11,7 @@ export default defineAppConfig({
   },
   tabBar: {
     color: '#999999',
-    selectedColor: '#04B8F1',
+    selectedColor: '#80D1C8',
     list: [
       {
         pagePath: 'pages/course/index',
