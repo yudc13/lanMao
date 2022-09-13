@@ -1,11 +1,11 @@
 export default defineAppConfig({
   pages: [
     'pages/course/index',
-    'pages/user/index'
+    'pages/user/index',
   ],
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
+    navigationBarBackgroundColor: '#80D1C8',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black',
   },

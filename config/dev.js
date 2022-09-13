@@ -4,6 +4,9 @@ module.exports = {
   },
   defineConstants: {
   },
+  plugins: [
+    // '@tarojs/plugin-react-devtools'
+  ],
   mini: {},
   h5: {}
 }
