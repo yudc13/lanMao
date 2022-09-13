@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "lanMao",
   "description": "蓝帽美育",
-  "appid": "touristappid",
+  "appid": "wx6c31e8aa9690428d",
   "setting": {
     "urlCheck": true,
     "es6": false,

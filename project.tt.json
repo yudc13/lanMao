@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./",
   "projectname": "lanMao",
-  "appid": "testAppId",
+  "appid": "wx6c31e8aa9690428d",
   "setting": {
     "es6": false,
     "minified": false
