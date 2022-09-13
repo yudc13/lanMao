@@ -1,0 +1,33 @@
+.calendar {
+  border-bottom-right-radius: 48px;
+  border-bottom-left-radius: 48px;
+  padding: 24px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+  .header {}
+  .weeks {
+    display: flex;
+    .week {
+      flex: 1;
+      text-align: center;
+      font-size: 28px;
+      color: rgba(152, 157, 179, 1);
+      font-weight: 500;
+    }
+  }
+  .days {
+    display: flex;
+    flex-wrap: wrap;
+    .day {
+      display: inline-block;
+      width: 100px;
+      height: 64px;
+      line-height: 64px;
+      text-align: center;
+      font-size: 28px;
+      color: rgba(51, 51, 51, 1);
+      &.disabled {
+        color: rgba(152, 157, 179, 1)
+      }
+    }
+  }
+}

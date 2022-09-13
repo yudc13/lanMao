@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar';
 import Switch from '../../components/Switch';
 
 import './index.less'
+import Calendar from '../../components/Calendar';
 
 export default class Course extends Component<PropsWithChildren> {
 
@@ -23,6 +24,7 @@ export default class Course extends Component<PropsWithChildren> {
         <NavBar>
           <Switch />
         </NavBar>
+        <Calendar />
         <Text>Hello world!</Text>
       </View>
     )
