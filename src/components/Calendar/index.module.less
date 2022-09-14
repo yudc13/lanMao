@@ -1,33 +1,92 @@
-.calendar {
+.calendarContainer {
+  position: relative;
+  width: 100%;
   border-bottom-right-radius: 48px;
   border-bottom-left-radius: 48px;
-  padding: 24px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
-  .header {}
-  .weeks {
+ .calendar {
+    position: relative;
+    width: 100%;
+    height: 820px;
     display: flex;
-    .week {
-      flex: 1;
-      text-align: center;
-      font-size: 28px;
-      color: rgba(152, 157, 179, 1);
-      font-weight: 500;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1024;
+    .calendarHeader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100rpx;
+      padding-top: 20rpx;
+      overflow: hidden;
+      z-index: 1024;
     }
-  }
-  .days {
-    display: flex;
-    flex-wrap: wrap;
-    .day {
-      display: inline-block;
-      width: 100px;
-      height: 64px;
-      line-height: 64px;
-      text-align: center;
-      font-size: 28px;
-      color: rgba(51, 51, 51, 1);
-      &.disabled {
-        color: rgba(152, 157, 179, 1)
+    .calendarWeeks {
+      position: absolute;
+      top: 100rpx;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 50rpx;
+      width: 100%;
+      padding: 10rpx 10rpx 0;
+      z-index: 1024;
+      transition: all .28s ease 0s;
+      .week {
+        flex: 1;
+        text-align: center;
+        font-size: 28px;
+        color: rgba(152, 157, 179, 1);
+        font-weight: 500;
       }
+    }
+    .calendarPanel {
+      position: absolute;
+      top: 150rpx;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 200rpx);
+      overflow: hidden;
+      z-index: 10;
+      .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: calc(100% / 7);
+        padding: 0 10rpx;
+        .day {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: calc(100% / 7);
+          height: 100%;
+          font-size: 28px;
+          color: rgba(51, 51, 51, 1);
+          &.disabled {
+            color: rgba(152, 157, 179, 1)
+          }
+          &.current {
+            color: #80D1C8;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    .controlBar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 1024;
     }
   }
 }
