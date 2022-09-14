@@ -23,7 +23,7 @@ export const getPrevMonthRestDays = (date: string) => {
   // 上一个月
   const prevDate = dayjs(date).subtract(1, 'month').format('YYYY-MM-DD')
   let lastMonthDays = getDayCount(prevDate)
-  let weekDay = getWeekDay(dayjs(date).year(), dayjs(date).month())
+  let weekDay = dayjs(date).day()
   const restDays: number[] = []
   while (weekDay > 0) {
     restDays.push(lastMonthDays--)
@@ -89,4 +89,17 @@ export const getCurrentCalendarDays = (date?: string) => {
     })
   })
   return calendarDays
+}
+
+export const getCurrentCalendarWeeks = (date?: string) => {
+  const current = dayjs(date)
+  const currentStr = current.format('YYYY-MM')
+  const prevDays = getPrevMonthRestDays(currentStr)
+  const weekDay = getWeekDay(dayjs(date).year(), dayjs(date).month())
+  const weekDays: number[] = []
+  for (let i = 1; i <= (7 - weekDay - prevDays.length); i++) {
+    weekDays.push(i)
+  }
+
+  return prevDays.concat(weekDays)
 }
