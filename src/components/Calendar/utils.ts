@@ -1,6 +1,12 @@
 import dayjs from 'dayjs';
+import {IDay} from './types';
+
+export const DAY_ROWS = 6
 
 export const weeks = ['日', '一', '二', '三', '四', '五', '六']
+
+export const addOneMonth = (currentDate: string) => dayjs(currentDate).add(1, 'month').format('YYYY-MM-DD')
+export const subtractOneMonth = (currentDate: string) => dayjs(currentDate).subtract(1, 'month').format('YYYY-MM-DD')
 
 // 获取当前月有多少天
 export const getDayCount = (date: string): number => {
@@ -60,26 +66,26 @@ export const getCurrentCalendarDays = (date?: string) => {
   const prevDays = getPrevMonthRestDays(currentStr)
   const currentDays = getCurrentMonthDays(currentStr)
   const nextDays = getNextMonthRestDays(currentStr)
-  const calendarDays: { date: string, type: 'active' | 'disabled', day: number }[] = []
+  const calendarDays: IDay[] = []
   prevDays.forEach(day => {
     calendarDays.push({
-      date: `${prevDateStr}-${day > 9 ? day : `0${day}`}`,
+      fullDate: `${prevDateStr}-${day > 9 ? day : `0${day}`}`,
       type: 'disabled',
-      day
+      date: day
     })
   })
   currentDays.forEach(day => {
     calendarDays.push({
-      date: `${currentStr}-${day > 9 ? day : `0${day}`}`,
+      fullDate: `${currentStr}-${day > 9 ? day : `0${day}`}`,
       type: 'active',
-      day
+      date: day
     })
   })
   nextDays.forEach(day => {
     calendarDays.push({
-      date: `${nextDateStr}-${day > 9 ? day : `0${day}`}`,
+      fullDate: `${nextDateStr}-${day > 9 ? day : `0${day}`}`,
       type: 'disabled',
-      day
+      date: day
     })
   })
   return calendarDays
