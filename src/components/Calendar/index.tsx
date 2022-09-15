@@ -34,11 +34,20 @@ const Calendar = () => {
   const handleSwiperChange = (e) => {
     const currentIndex = e.detail.current
     if ((currentSwiperIndex + 1) % 3 === currentIndex) {
-      // 当前月份+1
-      setCurrentDate(addOneMonth(currentDate))
+      if (viewType === 'month') {
+        // 当前月份+1
+        setCurrentDate(addOneMonth(currentDate))
+      } else {
+        setCurrentDate(addOneWeek(currentDate))
+      }
+
     } else {
-      // 当前月份-1
-      setCurrentDate(subtractOneMonth(currentDate))
+      if (viewType === 'month') {
+        // 当前月份-1
+        setCurrentDate(subtractOneMonth(currentDate))
+      } else {
+        setCurrentDate(subtractOneWeek(currentDate))
+      }
     }
     setCurrentSwiperIndex(currentIndex)
   }
@@ -61,7 +70,7 @@ const Calendar = () => {
     const nextSwiperIndex = (currentSwiperIndex + 1) % 3
     const prevSwiperIndex = (currentSwiperIndex + 2) % 3
 
-    if (viewType) {
+    if (viewType === 'month') {
       const prevDays = getCurrentCalendarDays(subtractOneMonth(currentDate))
       const days = getCurrentCalendarDays(currentDate)
       const nextDays = getCurrentCalendarDays(addOneMonth(currentDate))
@@ -84,7 +93,6 @@ const Calendar = () => {
     }
     return items
   }, [currentDate, currentSwiperIndex, viewType])
-
 
   return (
     <View className={styles.calendarContainer}>

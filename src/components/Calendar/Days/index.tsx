@@ -24,7 +24,7 @@ const Days: React.FC<DaysProps> = (props) => {
   const today = dayjs().format('YYYY-MM-DD')
   const { dateList, viewType, currentDate = today, onChange } = props
   return (
-    <View className={styles.days} style={viewType === 'week' ? { transform: `translate3d(0, -100px, 0)` } : {}}>
+    <View className={styles.days} style={viewType === 'week' ? { transform: `translate3d(0, 0, 0)` } : {}}>
       {
         monthRows.map((_, index) => (
           <View className={styles.row} key={index}>
