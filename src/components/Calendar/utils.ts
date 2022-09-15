@@ -1,12 +1,20 @@
 import dayjs from 'dayjs';
 import {IDay} from './types';
 
-export const DAY_ROWS = 6
+export const MONTH_ROWS = 6
+export const WEEK_ROWS = 1
 
 export const weeks = ['日', '一', '二', '三', '四', '五', '六']
 
-export const addOneMonth = (currentDate: string) => dayjs(currentDate).add(1, 'month').format('YYYY-MM-DD')
-export const subtractOneMonth = (currentDate: string) => dayjs(currentDate).subtract(1, 'month').format('YYYY-MM-DD')
+export const addDate = (currentDate: string, unit: dayjs.ManipulateType) => dayjs(currentDate).add(1, unit).format('YYYY-MM-DD')
+export const subtractDate = (currentDate: string, unit: dayjs.ManipulateType) => dayjs(currentDate).subtract(1, unit).format('YYYY-MM-DD')
+
+export const addOneMonth = (currentDate: string) => addDate(currentDate, 'month')
+export const subtractOneMonth = (currentDate: string) => addDate(currentDate, 'month')
+
+export const addOneWeek = (currentDate: string) => addDate(currentDate, 'week')
+export const subtractOneWeek = (currentDate: string) => subtractDate(currentDate, 'week')
+
 
 // 获取当前月有多少天
 export const getDayCount = (date: string): number => {
@@ -91,15 +99,18 @@ export const getCurrentCalendarDays = (date?: string) => {
   return calendarDays
 }
 
+// 获取当前时间周的时间区间
 export const getCurrentCalendarWeeks = (date?: string) => {
-  const current = dayjs(date)
-  const currentStr = current.format('YYYY-MM')
-  const prevDays = getPrevMonthRestDays(currentStr)
-  const weekDay = getWeekDay(dayjs(date).year(), dayjs(date).month())
-  const weekDays: number[] = []
-  for (let i = 1; i <= (7 - weekDay - prevDays.length); i++) {
-    weekDays.push(i)
+  // 当前周的第一天
+  const currentWeekStartDate = dayjs(date).startOf('week')
+  const calendarWeeks: IDay[] = []
+  for (let i = 0; i < 7; i++) {
+    const currentDate = currentWeekStartDate.add(i, 'day')
+    calendarWeeks.push({
+      fullDate: currentDate.format('YYYY-MM-DD'),
+      type: 'active',
+      date: currentDate.date()
+    })
   }
-
-  return prevDays.concat(weekDays)
+  return calendarWeeks
 }

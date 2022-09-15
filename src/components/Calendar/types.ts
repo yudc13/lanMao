@@ -5,3 +5,5 @@ export interface IDay {
   // 日
   date: number
 }
+
+export type CalendarViewType = 'week' | 'month'
