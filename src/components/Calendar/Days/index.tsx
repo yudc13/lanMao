@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 
 import {CalendarViewType, IDay} from '../types';
-import {MONTH_ROWS, WEEK_ROWS} from '../utils';
+import {MONTH_ROWS} from '../utils';
 
 
 import styles from './index.module.less';
@@ -19,16 +19,14 @@ interface DaysProps {
 }
 
 const monthRows = Array.from({ length: MONTH_ROWS })
-const weekRows = Array.from({ length: WEEK_ROWS })
 
 const Days: React.FC<DaysProps> = (props) => {
   const today = dayjs().format('YYYY-MM-DD')
   const { dateList, viewType, currentDate = today, onChange } = props
-  const rows = viewType === 'week' ? weekRows : monthRows
   return (
-    <View className={styles.days}>
+    <View className={styles.days} style={viewType === 'week' ? { transform: `translate3d(0, -100px, 0)` } : {}}>
       {
-        rows.map((_, index) => (
+        monthRows.map((_, index) => (
           <View className={styles.row} key={index}>
             {dateList.slice(index * 7, index * 7 + 7).map(day => (
               <Text

@@ -61,7 +61,7 @@ const Calendar = () => {
     const nextSwiperIndex = (currentSwiperIndex + 1) % 3
     const prevSwiperIndex = (currentSwiperIndex + 2) % 3
 
-    if (viewType === 'month') {
+    if (viewType) {
       const prevDays = getCurrentCalendarDays(subtractOneMonth(currentDate))
       const days = getCurrentCalendarDays(currentDate)
       const nextDays = getCurrentCalendarDays(addOneMonth(currentDate))
@@ -85,8 +85,6 @@ const Calendar = () => {
     return items
   }, [currentDate, currentSwiperIndex, viewType])
 
-  const transform = dayjs(selectedDate).date() % 7 * 50
-
 
   return (
     <View className={styles.calendarContainer}>
@@ -100,7 +98,7 @@ const Calendar = () => {
         <View className={styles.calendarWeeks}>
           {weeks.map(week => <Text className={styles.week} key={week}>{week}</Text>)}
         </View>
-        <View className={styles.calendarPanel} style={viewType === 'week' ? { transform: `translate3d(0, -${transform}rpx, 0)` } : {}}>
+        <View className={styles.calendarPanel}>
           <Swiper circular current={currentSwiperIndex} onChange={handleSwiperChange} style={{ width: '100%', height: '100%' }}>
             {
               swiperItems.map((item, index) => (
