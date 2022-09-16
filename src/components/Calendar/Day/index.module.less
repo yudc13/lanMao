@@ -1,0 +1,26 @@
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  .date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.85);
+    &.disabled {
+      color: #f0f0f0
+    }
+    &.current {
+      background-color: #60aba5;
+      color: #ffffff;
+      border-radius: 50%;
+    }
+  }
+}

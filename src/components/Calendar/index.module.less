@@ -14,7 +14,6 @@
     z-index: 1024;
     &.week {
       height: 250px;
-      transition: height 0.5s cubic-bezier(0.5, 0, 0.27, 1.5) 0s;
     }
     .calendarHeader {
       position: absolute;
@@ -27,30 +26,28 @@
       width: 100%;
       height: 100px;
       background-color: #ffffff;
-      padding: 20px 40px 0;
+      padding: 20px 40px;
       overflow: hidden;
       z-index: 1024;
     }
     .calendarWeeks {
       position: absolute;
-      top: 100rpx;
+      top: 100px;
       left: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      height: 50rpx;
+      height: 50px;
       width: 100%;
       background-color: #ffffff;
-      padding: 10rpx 10rpx 0;
       z-index: 1024;
-      transition: all .28s ease 0s;
       .week {
         flex: 1;
         text-align: center;
         font-size: 28px;
-        color: rgba(152, 157, 179, 1);
-        font-weight: 500;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 700;
       }
     }
     .calendarPanel {
@@ -61,7 +58,6 @@
       height: calc(100% - 150px);
       overflow: hidden;
       z-index: 10;
-      transition: transform 0.5s ease-out;
     }
   }
 }
