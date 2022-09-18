@@ -1,3 +1,5 @@
+import path from 'path'
+
 const config = {
   projectName: 'lanMao',
   date: '2022-9-9',
@@ -10,7 +12,12 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: [],
-  defineConstants: {
+  defineConstants: {},
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/hooks': path.resolve(__dirname, '..', 'src/hooks'),
+    '@/static': path.resolve(__dirname, '..', 'src/static'),
+    '@/styles': path.resolve(__dirname, '..', 'src/styles'),
   },
   copy: {
     patterns: [

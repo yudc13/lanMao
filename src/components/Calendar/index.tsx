@@ -1,6 +1,8 @@
 import {Swiper, SwiperItem, Text, View} from '@tarojs/components';
 import React, {useCallback, useMemo, useState} from 'react';
 import dayjs from 'dayjs';
+import classNames from 'classnames';
+
 
 import {
   addOneMonth,
@@ -11,12 +13,15 @@ import {
   subtractOneWeek,
   weeks
 } from './utils'
+
+import {CalendarViewType, IDay} from './types';
+
+import DatePicker from './DatePicker';
 import Days from './Days';
 
+
 import styles from './index.module.less'
-import {CalendarViewType, IDay} from './types';
-import DatePicker from './DatePicker';
-import classNames from 'classnames';
+
 
 const today = dayjs().format('YYYY-MM-DD')
 const swiperItemStyles: React.CSSProperties = {

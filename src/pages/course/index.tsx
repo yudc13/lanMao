@@ -1,32 +1,21 @@
-import { Component, PropsWithChildren } from 'react'
-import {View, Text} from '@tarojs/components'
-import NavBar from '../../components/NavBar';
-import Switch from '../../components/Switch';
+import {Text, View} from '@tarojs/components'
+import Switch from '@/components/Switch';
+import NavBar from '@/components/NavBar';
+import Calendar from '@/components/Calendar';
 
 import './index.less'
-import Calendar from '../../components/Calendar';
 
-export default class Course extends Component<PropsWithChildren> {
 
-  componentWillMount () { }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <NavBar>
-          <Switch />
-        </NavBar>
-        <Calendar />
-        <Text>Hello world!</Text>
-      </View>
-    )
-  }
+const Course = () => {
+  return (
+    <View className='index'>
+      <NavBar>
+        <Switch />
+      </NavBar>
+      <Calendar />
+      <Text>Hello world!</Text>
+    </View>
+  )
 }
+
+export default Course

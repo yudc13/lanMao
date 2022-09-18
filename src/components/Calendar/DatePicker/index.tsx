@@ -2,7 +2,7 @@ import React from 'react'
 import {Image, Picker, Text, View} from '@tarojs/components';
 import dayjs from 'dayjs';
 
-import iconDown from '../../../static/icon-down.svg'
+import iconDown from '@/static/icon-down.svg'
 
 import styles from './index.module.less'
 
