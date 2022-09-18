@@ -10,7 +10,7 @@ export const addDate = (currentDate: string, unit: dayjs.ManipulateType) => dayj
 export const subtractDate = (currentDate: string, unit: dayjs.ManipulateType) => dayjs(currentDate).subtract(1, unit).format('YYYY-MM-DD')
 
 export const addOneMonth = (currentDate: string) => addDate(currentDate, 'month')
-export const subtractOneMonth = (currentDate: string) => addDate(currentDate, 'month')
+export const subtractOneMonth = (currentDate: string) => subtractDate(currentDate, 'month')
 
 export const addOneWeek = (currentDate: string) => addDate(currentDate, 'week')
 export const subtractOneWeek = (currentDate: string) => subtractDate(currentDate, 'week')

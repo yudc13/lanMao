@@ -1,17 +1,23 @@
 import {Text, View} from '@tarojs/components';
-import {useState} from 'react';
 
 import './index.less'
 
-const Switch = () => {
-  const [checked, setChecked] = useState(false)
+interface SwitchProps {
+  checked: boolean
+  checkedLabel: string
+  unCheckedLabel: string
+  onChange: (checked: boolean) => void
+}
+
+const Switch = (props: SwitchProps) => {
+  const { checked, checkedLabel, unCheckedLabel, onChange } = props
   const handleCheck = () => {
-    setChecked(!checked)
+    onChange(!checked)
   }
   return (
     <View className={`switch ${checked ? 'checked' : ''}`} onClick={handleCheck}>
-      <Text className='switch-label switch-label-off'>今日</Text>
-      <Text className='switch-label switch-label-on'>日程</Text>
+      <Text className='switch-label switch-label-on'>{checkedLabel}</Text>
+      <Text className='switch-label switch-label-off'>{unCheckedLabel}</Text>
       <Text className='switch-selection'></Text>
     </View>
   )

@@ -13,14 +13,16 @@ import {
   subtractOneWeek,
   weeks
 } from './utils'
-
 import {CalendarViewType, IDay} from './types';
 
-import DatePicker from './DatePicker';
 import Days from './Days';
+import DatePicker from './DatePicker';
 
+import Switch from '../Switch';
 
 import styles from './index.module.less'
+import TodayBtn from './TodayBtn';
+
 
 
 const today = dayjs().format('YYYY-MM-DD')
@@ -38,6 +40,7 @@ const Calendar = () => {
 
   const handleSwiperChange = (e) => {
     const currentIndex = e.detail.current
+    console.log((currentSwiperIndex + 1) % 3, currentIndex)
     if ((currentSwiperIndex + 1) % 3 === currentIndex) {
       if (viewType === 'month') {
         // 当前月份+1
@@ -45,7 +48,6 @@ const Calendar = () => {
       } else {
         setCurrentDate(addOneWeek(currentDate))
       }
-
     } else {
       if (viewType === 'month') {
         // 当前月份-1
@@ -65,9 +67,9 @@ const Calendar = () => {
     setSelectedDate(date)
   }, [])
 
-  const handleChangeViewType = () => {
-    setViewType(viewType === 'week' ? 'month' : 'week')
-  }
+  const handleViewTypeChange =  useCallback((checked: boolean) => {
+    setViewType(checked ? 'week' : 'month')
+  }, [])
 
   const swiperItems: [IDay[], IDay[], IDay[]] = useMemo(() => {
     const items: [IDay[], IDay[], IDay[]] = [[], [], []]
@@ -99,17 +101,20 @@ const Calendar = () => {
     return items
   }, [currentDate, currentSwiperIndex, viewType])
 
+  console.log(swiperItems, currentDate)
+
   return (
     <View className={styles.calendarContainer}>
       <View className={classNames(styles.calendar, { [styles.week]: viewType === 'week' })}>
         <View className={styles.calendarHeader}>
-          <DatePicker currentDate={selectedDate} onChange={handleDateChange} />
-          <View onClick={handleChangeViewType}>
-            {viewType === 'week' ? '月' : '周'}
+          <DatePicker currentDate={currentDate} onChange={handleDateChange} />
+          <View className={styles.calendarHeaderRight}>
+            <TodayBtn style={{ marginRight: 10 }} />
+            <Switch checked={viewType === 'week'} onChange={handleViewTypeChange} checkedLabel='周' unCheckedLabel='月' />
           </View>
         </View>
         <View className={styles.calendarWeeks}>
-          {weeks.map(week => <Text className={styles.week} key={week}>{week}</Text>)}
+          {weeks.map(week => <Text className={classNames(styles.week, {[styles.active]: ['日', '六'].includes(week)})} key={week}>{week}</Text>)}
         </View>
         <View className={styles.calendarPanel}>
           <Swiper circular current={currentSwiperIndex} onChange={handleSwiperChange} style={{ width: '100%', height: '100%' }}>

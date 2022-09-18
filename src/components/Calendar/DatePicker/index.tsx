@@ -15,7 +15,7 @@ const DatePicker: React.FC<DataPickerProps> = ({ currentDate, onChange }) => {
   const handleDateChange = (e) => {
     onChange(e.detail.value)
   }
-  const date = dayjs(currentDate).format('YYYY年MM月DD日')
+  const date = dayjs(currentDate).format('YYYY年MM月')
   return (
     <Picker mode='date' fields='month' value={currentDate} onChange={handleDateChange}>
       <View className={styles.datePicker}>
