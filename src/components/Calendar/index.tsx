@@ -32,10 +32,15 @@ const swiperItemStyles: React.CSSProperties = {
   height: '100%'
 }
 
-const Calendar = () => {
+interface CalendarProps {
+  view?: CalendarViewType
+  onViewChange?: (view: CalendarViewType) => void
+}
+
+const Calendar = (props: CalendarProps) => {
+  const { view: viewType = 'week', onViewChange } = props;
   const [currentDate, setCurrentDate] = useState(today)
   const [selectedDate, setSelectedDate] = useState(today)
-  const [viewType, setViewType] = useState<CalendarViewType>('week')
   const [currentSwiperIndex, setCurrentSwiperIndex ] = useState(1)
 
   const handleSwiperChange = (e) => {
@@ -68,8 +73,8 @@ const Calendar = () => {
   }, [])
 
   const handleViewTypeChange =  useCallback((checked: boolean) => {
-    setViewType(checked ? 'week' : 'month')
-  }, [])
+    onViewChange?.(checked ? 'week' : 'month')
+  }, [onViewChange])
 
   const swiperItems: [IDay[], IDay[], IDay[]] = useMemo(() => {
     const items: [IDay[], IDay[], IDay[]] = [[], [], []]
