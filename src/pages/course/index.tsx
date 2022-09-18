@@ -1,19 +1,23 @@
-import {Text, View} from '@tarojs/components'
+import {View} from '@tarojs/components'
 import Switch from '@/components/Switch';
 import NavBar from '@/components/NavBar';
 import Calendar from '@/components/Calendar';
+import DayView from '@/components/DayView';
+
 
 import './index.less'
 
 
 const Course = () => {
   return (
-    <View className='index'>
+    <View className='course'>
       <NavBar>
         <Switch />
       </NavBar>
       <Calendar />
-      <Text>Hello world!</Text>
+      <View className='courseView'>
+        <DayView />
+      </View>
     </View>
   )
 }
