@@ -3,7 +3,7 @@
   .dayContainer {
     .dayRow {
       display: flex;
-      height: 100px;
+      height: 80px;
       &Left {
         width: 100px;
         height: 100%;
@@ -30,6 +30,20 @@
     position: absolute;
     right: 24px;
     left: 124px;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-radius: 0 20px 20px 0;
+    border-left: 8px solid;
+
+    &Item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 26px;
+      color: rgba(0, 0, 0, 0.65);
+      line-height: 1;
+    }
   }
 }
